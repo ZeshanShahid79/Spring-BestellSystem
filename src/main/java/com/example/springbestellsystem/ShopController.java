@@ -22,7 +22,7 @@ public class ShopController {
         return shopService.listAllProducts();
     }
 
-    @GetMapping("/oders/{id}")
+    @GetMapping("/orders/{id}")
     public Order getOrderById(@PathVariable String id) {
         return shopService.getOrder(id);
     }
@@ -33,7 +33,7 @@ public class ShopController {
     }
 
     @PostMapping
-    public Order addOrder(List<String> productIds) {
+    public Order addOrder(@RequestBody List<String> productIds) {
         return shopService.addOrder(productIds);
     }
 
@@ -42,7 +42,7 @@ public class ShopController {
         return shopService.listAllOrders();
     }
 
-    @PutMapping("/update/Order{id}")
+    @PutMapping("/update/order/{id}")
     public Order updateOrder(@PathVariable String id, @RequestBody Order order) {
         if (order.getId().equals(id)) {
             return shopService.updateOrder(order);
