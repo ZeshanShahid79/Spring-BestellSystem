@@ -39,4 +39,7 @@ public class OrderRepo {
         return orderToAdd;
     }
 
+    public void delete(String id) {
+        this.orderList.remove(id);
+    }
 }

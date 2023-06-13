@@ -30,4 +30,7 @@ public class ProductRepo {
         return productList.get(id);
     }
 
+    public void delete(String id) {
+        productList.remove(id);
+    }
 }

@@ -23,6 +23,10 @@ public class ShopService {
         return productRepo.listProductList();
     }
 
+    public void deleteProduct(String id) {
+        this.productRepo.delete(id);
+    }
+
     public Order getOrder(String id) {
         return orderRepo.getOrder(id);
     }
@@ -46,5 +50,14 @@ public class ShopService {
 
     public List<Order> listAllOrders() {
         return orderRepo.listAllOrders();
+    }
+
+    public void deleteOrder(String id) {
+        this.orderRepo.delete(id);
+    }
+
+    public Order updateOrder(Order order) {
+        return orderRepo.addOrder(order);
+
     }
 }

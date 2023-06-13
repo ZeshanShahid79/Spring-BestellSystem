@@ -12,19 +12,24 @@ public class ShopController {
 
     private final ShopService shopService;
 
-    @GetMapping("{id}")
+    @GetMapping("/products/{id}")
     public Product getProductById(@PathVariable String id) {
         return shopService.getProduct(id);
     }
 
-    @GetMapping
+    @GetMapping("/products")
     public List<Product> products() {
         return shopService.listAllProducts();
     }
 
-    @GetMapping("{id}")
+    @GetMapping("/oders/{id}")
     public Order getOrderById(@PathVariable String id) {
         return shopService.getOrder(id);
+    }
+
+    @DeleteMapping("/products/{id}")
+    public void deleteProducts(@PathVariable String id) {
+        this.shopService.deleteProduct(id);
     }
 
     @PostMapping
@@ -32,8 +37,22 @@ public class ShopController {
         return shopService.addOrder(productIds);
     }
 
-    @GetMapping
+    @GetMapping("/orders")
     public List<Order> listAllOrders() {
         return shopService.listAllOrders();
     }
+
+    @PutMapping("/update/Order{id}")
+    public Order updateOrder(@PathVariable String id, @RequestBody Order order) {
+        if (order.getId().equals(id)) {
+            return shopService.updateOrder(order);
+        }
+        return null;
+    }
+
+    @DeleteMapping("/orders/{id}")
+    public void deleteOrder(@PathVariable String id) {
+        this.shopService.deleteOrder(id);
+    }
+
 }
