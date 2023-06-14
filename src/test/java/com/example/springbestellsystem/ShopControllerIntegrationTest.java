@@ -143,4 +143,9 @@ class ShopControllerIntegrationTest {
                         """));
 
     }
+
+    @Test
+    void deleteOrderByIdAndExpectStatus200() throws Exception {
+        mockMvc.perform(MockMvcRequestBuilders.delete("/api/shop/orders/1")).andExpect(status().isOk());
+    }
 }
